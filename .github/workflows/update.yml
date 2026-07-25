@@ -1,0 +1,38 @@
+name: 홈페이지 자동 업데이트
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 매일 한국시간 아침 6시 (UTC 21:00)
+  workflow_dispatch:        # Actions 탭에서 수동 실행 버튼
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 데이터 수집 및 페이지 생성
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python build.py
+
+      - name: 변경사항 커밋
+        run: |
+          git config user.name "auto-update-bot"
+          git config user.email "actions@github.com"
+          git add index.html data.json
+          if git diff --cached --quiet; then
+            echo "변경사항 없음 — 커밋 생략"
+          else
+            git commit -m "자동 업데이트: $(date -u +%Y-%m-%d)"
+            git push
+          fi
