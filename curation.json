@@ -1,0 +1,318 @@
+{
+ "meta": {
+  "PLQqzQ89bU09Q": {
+   "group": "basic",
+   "order": 0,
+   "sub": "Travel & Conversation",
+   "lv": "Beginner",
+   "st": "Ongoing",
+   "pdf": true,
+   "rec": false,
+   "new": true
+  },
+  "PLlWtfSzqKGZ3ZUfePJqxiWHY5ZZeTtki_": {
+   "group": "basic",
+   "order": 1,
+   "sub": "Travel & Conversation",
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ3cQVH0BSsZTZKGGgQVMi6h": {
+   "group": "basic",
+   "order": 2,
+   "sub": "Travel & Conversation",
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": true,
+   "new": false
+  },
+  "PLlWtfSzqKGZ1cI8kQJVVvCESB_kSLjQD3": {
+   "group": "basic",
+   "order": 3,
+   "sub": "Travel & Conversation",
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ3cZ4iedSMuECvM63tep7Qm": {
+   "group": "basic",
+   "order": 4,
+   "sub": "Core Vocabulary",
+   "lv": "Beg–Int",
+   "st": "",
+   "pdf": true,
+   "rec": true,
+   "new": false
+  },
+  "PLlWtfSzqKGZ3CyyzwMjlaOP9YL8nelS-S": {
+   "group": "basic",
+   "order": 5,
+   "sub": "Core Vocabulary",
+   "lv": "Beg–Int",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ3Y7fAp2zgcEolFQcicBsfv": {
+   "group": "basic",
+   "order": 6,
+   "sub": "Grammar & Conjugation",
+   "lv": "Beg–Int",
+   "st": "",
+   "pdf": true,
+   "rec": true,
+   "new": false
+  },
+  "PLlWtfSzqKGZ2IVUXsWAIRRW4bPZWyNRr_": {
+   "group": "basic",
+   "order": 7,
+   "sub": "Grammar & Conjugation",
+   "lv": "Beg–Int",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ0NEqrL18jxLZvmqZ7FzW-g": {
+   "group": "basic",
+   "order": 8,
+   "sub": "Sentence Practice",
+   "lv": "All levels",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ1RmI2yMGSxYb-JWtTfBY-v": {
+   "group": "inter",
+   "order": 0,
+   "sub": "Kanji",
+   "lv": "Int–Adv",
+   "st": "",
+   "pdf": true,
+   "rec": true,
+   "new": false
+  },
+  "PLlWtfSzqKGZ1hx6t4N2icOfaHQYbJAz3g": {
+   "group": "inter",
+   "order": 1,
+   "sub": "Kanji",
+   "lv": "Int–Adv",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ35nlaCRA1n_yID0bfzBqlJ": {
+   "group": "inter",
+   "order": 2,
+   "sub": "Kanji",
+   "lv": "Int–Adv",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ2cYW5tgVffjUpI2Pkix2Am": {
+   "group": "inter",
+   "order": 3,
+   "sub": "Idioms & Expressions",
+   "lv": "Intermediate",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ2L8ZRirxpa-2u8ZlBflIH7": {
+   "group": "inter",
+   "order": 4,
+   "sub": "Idioms & Expressions",
+   "lv": "Intermediate",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ22OInC94LkChA-y-eZ4kf8": {
+   "group": "inter",
+   "order": 5,
+   "sub": "Idioms & Expressions",
+   "lv": "Intermediate",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ24hbZYrqGyxgyc729OFZ-w": {
+   "group": "inter",
+   "order": 6,
+   "sub": "Real-world Japanese",
+   "lv": "Intermediate",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false
+  },
+  "PLlWtfSzqKGZ0Ce6FpJk3dO09vMlmkhNSV": {
+   "group": "jlpt",
+   "order": 0,
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N5",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ2FGzFRNYnkbOeOkpXcZY1X": {
+   "group": "jlpt",
+   "order": 1,
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N5",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ1I1xQpFIAmdJBa-AT5qsOR": {
+   "group": "jlpt",
+   "order": 2,
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N5",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ2O_bLKsHQFcz5e1R7eRvNX": {
+   "group": "jlpt",
+   "order": 3,
+   "lv": "Beginner",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N5",
+   "type": "grammar"
+  },
+  "PLlWtfSzqKGZ3hzol2Ix32HGgQ65Bf43Go": {
+   "group": "jlpt",
+   "order": 4,
+   "lv": "Beg–Int",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N4",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ0x2dFcVMyp66CcwKLf-bf4": {
+   "group": "jlpt",
+   "order": 5,
+   "lv": "Beg–Int",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N4",
+   "type": "grammar"
+  },
+  "PLlWtfSzqKGZ2RvmY9U_sraAUPzY9FvTH_": {
+   "group": "jlpt",
+   "order": 6,
+   "lv": "Intermediate",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N3",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ3wHKYjyf9-8W5-n-EFQwXt": {
+   "group": "jlpt",
+   "order": 7,
+   "lv": "Intermediate",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N3",
+   "type": "grammar"
+  },
+  "PLlWtfSzqKGZ0vjD05dKwZpxLxvnON_fbp": {
+   "group": "jlpt",
+   "order": 8,
+   "lv": "Upper-Int",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N2",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ1Bi3HRBmFtoKY-V5Fpews1": {
+   "group": "jlpt",
+   "order": 9,
+   "lv": "Upper-Int",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N2",
+   "type": "grammar"
+  },
+  "PLlWtfSzqKGZ1kUCaDh7SgGbwsUGI4sSSh": {
+   "group": "jlpt",
+   "order": 10,
+   "lv": "Advanced",
+   "st": "Ongoing",
+   "pdf": true,
+   "rec": false,
+   "new": true,
+   "level": "N1",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ2pOpaA6LwvSStv0GtEvZEy": {
+   "group": "jlpt",
+   "order": 11,
+   "lv": "Advanced",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N1",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ2F0UkMMRy5E4MnWBS4lW7T": {
+   "group": "jlpt",
+   "order": 12,
+   "lv": "Advanced",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N1",
+   "type": "vocab"
+  },
+  "PLlWtfSzqKGZ02wtY3ppPB3nzvS7n1KWjV": {
+   "group": "jlpt",
+   "order": 13,
+   "lv": "Advanced",
+   "st": "",
+   "pdf": true,
+   "rec": false,
+   "new": false,
+   "level": "N1",
+   "type": "grammar"
+  }
+ }
+}

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Shadowing — SHADOWING 日本語</title>
+<meta name="description" content="Learn Japanese by listening and repeating. Level-based courses and JLPT N5–N1 vocabulary, grammar, kanji and sentence practice.">
+<style>
+:root{
+  --bg:#fbfbfd; --bg2:#f5f5f7; --text:#1d1d1f; --text2:#6e6e73; --line:rgba(0,0,0,.08);
+  --card:#ffffff; --accent:#0071e3; --accent-h:#0077ed; --nav:rgba(251,251,253,.82);
+  --shadow:0 4px 16px rgba(0,0,0,.06);
+  --gold:#b8860b; --green:#1d8a3e;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#000; --bg2:#161617; --text:#f5f5f7; --text2:#a1a1a6; --line:rgba(255,255,255,.12);
+    --card:#1c1c1e; --nav:rgba(22,22,23,.8); --shadow:0 4px 16px rgba(0,0,0,.4);
+    --gold:#e0b13e; --green:#4cd964;
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro KR","SF Pro Text","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",Roboto,sans-serif;
+  background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit;text-align:left}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  background:var(--nav);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:880px;margin:0 auto;height:100%;display:flex;align-items:center;gap:8px;padding:0 22px}
+.nav-logo{font-size:17px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;margin-right:8px}
+.nav-logo span{color:#e60012}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-size:13px;color:var(--text2);padding:6px 12px;border-radius:100px;white-space:nowrap;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{background:var(--text);color:var(--bg)}
+.nav-search-btn{padding:8px;border-radius:100px;display:flex;align-items:center;color:var(--text2)}
+.nav-search-btn:hover{color:var(--text)}
+
+/* ---------- Search overlay ---------- */
+.search-overlay{position:fixed;inset:0;z-index:200;background:var(--nav);
+  backdrop-filter:saturate(180%) blur(30px);-webkit-backdrop-filter:saturate(180%) blur(30px);
+  opacity:0;pointer-events:none;transition:opacity .25s;overflow-y:auto}
+.search-overlay.open{opacity:1;pointer-events:auto}
+.search-head{max-width:820px;margin:0 auto;padding:80px 22px 10px;display:flex;align-items:center;gap:14px}
+.search-head svg{flex:none;color:var(--text2)}
+#searchInput{flex:1;font-size:clamp(22px,4vw,34px);font-weight:700;letter-spacing:-.02em;border:none;outline:none;background:transparent;color:var(--text)}
+#searchInput::placeholder{color:var(--text2);opacity:.5}
+.search-close{font-size:15px;color:var(--text2);padding:8px 14px;border-radius:100px;background:var(--bg2)}
+.search-meta{max-width:820px;margin:0 auto;padding:4px 22px 14px;color:var(--text2);font-size:14px}
+.search-results{max-width:820px;margin:0 auto;padding:0 22px 80px}
+
+/* ---------- Hero ---------- */
+.hero{padding:108px 22px 46px;text-align:center;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%)}
+.ch-card{display:inline-flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:12px 20px;margin-bottom:26px;box-shadow:var(--shadow);transition:transform .2s}
+.ch-card:hover{transform:translateY(-2px)}
+.ch-card .yt{flex:none;width:40px;height:28px;background:#f00;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.ch-card .yt svg{width:14px;height:14px;fill:#fff;margin-left:1px}
+.ch-card .ch-txt{text-align:left}
+.ch-card .ch-nm{font-size:15px;font-weight:700;letter-spacing:-.01em;display:block}
+.ch-card .ch-url{font-size:12.5px;color:var(--accent);font-weight:500}
+.hero h1{font-size:clamp(32px,6vw,54px);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+.hero h1 .jp{display:block;font-size:clamp(14px,2vw,18px);font-weight:600;color:var(--text2);letter-spacing:.14em;margin-bottom:14px}
+.hero p{font-size:clamp(15px,2.2vw,19px);color:var(--text2);margin:16px auto 0;max-width:560px;line-height:1.55;font-weight:500}
+.hero-cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center}
+.btn{font-size:15px;font-weight:500;padding:11px 22px;border-radius:100px;transition:.2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-h)}
+.btn-secondary{border:1px solid var(--accent);color:var(--accent)}
+.btn-secondary:hover{background:var(--accent);color:#fff}
+.member-note{display:inline-block;margin-top:18px;font-size:13px;line-height:1.65;color:var(--text2);font-weight:500;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 18px;transition:.2s}
+.member-note:hover{color:var(--accent);border-color:var(--accent)}
+@media (max-width:640px){.mn-br{display:none}}
+.hero-stats{margin-top:34px;display:flex;justify-content:center;gap:clamp(24px,5vw,60px);flex-wrap:wrap}
+.stat b{display:block;font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:12.5px;color:var(--text2);font-weight:500}
+
+/* ---------- Sections ---------- */
+.section{max-width:880px;margin:0 auto;padding:46px 22px 4px}
+.section-head h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;letter-spacing:-.02em}
+.section-head p{font-size:14px;color:var(--text2);margin-top:5px;font-weight:500}
+
+/* ---------- Badges ---------- */
+.bdg{font-size:10.5px;font-weight:700;padding:2.5px 7px;border-radius:100px;white-space:nowrap;flex:none}
+.bdg-lv{background:var(--bg2);color:var(--text2);border:1px solid var(--line)}
+.bdg-rec{background:rgba(184,134,11,.12);color:var(--gold)}
+.bdg-new{background:#e60012;color:#fff}
+.bdg-pdf{background:rgba(0,113,227,.1);color:var(--accent)}
+.bdg-ing{color:var(--green);border:1px dashed currentColor;background:transparent;opacity:.9}
+.bdg-mem{background:rgba(29,138,62,.1);color:var(--green);flex:none}
+.bdg-prem{background:rgba(124,58,237,.1);color:#7c3aed;flex:none}
+@media (prefers-color-scheme: dark){ .bdg-prem{color:#a78bfa} }
+
+/* ---------- Grouped list ---------- */
+.list{margin-top:20px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.sub-h{padding:13px 16px 7px;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--text2);
+  text-transform:uppercase;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.sub-h::before{content:'';width:3px;height:12px;border-radius:2px;background:var(--accent)}
+.pl + .sub-h{margin-top:2px}
+.pl{border-bottom:1px solid var(--line)}
+.pl:last-child{border-bottom:none}
+.pl-row{width:100%;display:flex;align-items:center;gap:8px;padding:11px 16px;transition:background .15s;cursor:pointer}
+.pl-row:hover{background:var(--bg2)}
+.pl-name{flex:1;min-width:0}
+.pl-name .nm{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slots{display:flex;gap:6px;align-items:center;flex:none}
+.slot{display:flex;justify-content:center;flex:none}
+.slot-mark{width:62px}
+.slot-lv{width:56px}
+.slot-st{width:64px}
+.slot-pdf{width:40px}
+.pl-cnt{width:46px;text-align:right}
+@media (max-width:700px){ .slot-st{display:none} }
+@media (max-width:560px){ .slot-lv{display:none} .slot-mark{width:auto} .slot-mark:empty{display:none} .pl-name .nm{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical} }
+.pl-cnt{font-size:13px;color:var(--text2);white-space:nowrap;flex:none}
+.chev{flex:none;color:var(--text2);transition:transform .3s}
+.pl.open .chev{transform:rotate(90deg)}
+.pl-body{display:none;background:var(--bg2)}
+.pl.open .pl-body{display:block}
+.pl-actions{display:flex;justify-content:flex-end;padding:10px 18px 0}
+.pl-actions a{font-size:13px;color:var(--accent);font-weight:500}
+.pl-actions a:hover{text-decoration:underline}
+.vid{display:flex;align-items:center;gap:12px;padding:9px 18px;border-top:1px solid var(--line);transition:background .15s}
+.vid:first-of-type{border-top:none}
+.vid:hover{background:rgba(0,113,227,.06)}
+.vid .no{font-size:12px;color:var(--text2);width:22px;flex:none;text-align:right;font-variant-numeric:tabular-nums}
+.vid .vt{flex:1;min-width:0;font-size:14px;font-weight:500;line-height:1.45;letter-spacing:-.005em;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vid .vm{font-size:12px;color:var(--text2);white-space:nowrap;flex:none}
+.vid .go{flex:none;width:24px;height:17px;border-radius:5px;background:var(--bg2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .15s}
+.vid .go svg{width:8px;height:8px;fill:var(--text2);margin-left:1px;transition:fill .15s}
+.vid:hover .go{background:#f00;border-color:#f00;transform:scale(1.08)}
+.vid:hover .go svg{fill:#fff}
+.pop-more{display:block;margin:12px auto 0;font-size:13.5px;font-weight:500;color:var(--accent);border:1px solid var(--accent);padding:8px 22px;border-radius:100px;transition:.2s;text-align:center}
+.pop-more:hover{background:var(--accent);color:#fff}
+.pl-more{display:block;width:100%;text-align:center;font-size:13px;color:var(--accent);font-weight:500;padding:11px;border-top:1px solid var(--line)}
+.pl-more:hover{background:rgba(0,113,227,.06)}
+@media (max-width:600px){ .vid .vm{display:none} .vid .no{display:none} }
+
+/* ---------- JLPT segmented ---------- */
+.seg-wrap{position:sticky;top:52px;z-index:50;padding:12px 0 6px;margin-top:14px;
+  background:linear-gradient(180deg,var(--bg) 82%,transparent);display:flex;flex-direction:column;gap:8px}
+.seg-line{display:flex;align-items:center;gap:10px}
+.seg-lbl{font-size:12.5px;font-weight:700;color:var(--text2);width:34px;flex:none}
+.seg{display:inline-flex;background:var(--bg2);border-radius:100px;padding:4px;gap:2px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{font-size:13px;font-weight:600;padding:7px 15px;border-radius:100px;color:var(--text2);transition:.25s;white-space:nowrap}
+.seg button:hover{color:var(--text)}
+.seg button.on{background:var(--card);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.jlpt-desc{font-size:13.5px;color:var(--text2);font-weight:500}
+.slot-n{width:38px}
+.bdg-n{background:var(--text);color:var(--bg)}
+
+/* ---------- All videos ---------- */
+.load-wrap{text-align:center;padding:26px 0 8px}
+.load-btn{font-size:14px;font-weight:500;color:var(--accent);border:1px solid var(--accent);padding:10px 26px;border-radius:100px;transition:.2s}
+.load-btn:hover{background:var(--accent);color:#fff}
+
+/* ---------- Links band ---------- */
+.band{max-width:880px;margin:52px auto 0;padding:0 22px}
+.band-inner{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.band a{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);transition:background .15s}
+.band a:last-child{border-bottom:none}
+.band a:hover{background:var(--bg2)}
+.band .ico{flex:none;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--bg2)}
+.band b{font-size:14.5px;font-weight:600;display:block}
+.band p{font-size:12.5px;color:var(--text2);margin-top:2px;line-height:1.45}
+.band .chev{margin-left:auto}
+
+.divider{max-width:880px;margin:44px auto 0;border-top:1px solid var(--line)}
+footer{max-width:880px;margin:0 auto;padding:28px 22px 56px;color:var(--text2);font-size:12.5px;line-height:1.8}
+footer a{color:var(--accent)}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">Japanese Shadowing<span>&#8202;.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#pop" data-sec="pop">Popular</a>
+      <a href="#basic" data-sec="basic">Beginner</a>
+      <a href="#inter" data-sec="inter">Intermediate+</a>
+      <a href="#jlpt" data-sec="jlpt">JLPT</a>
+      <a href="#all" data-sec="all">All Playlists</a>
+    </div>
+    <button class="nav-search-btn" id="searchOpen" aria-label="Search">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-head">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input id="searchInput" type="text" placeholder="Search videos — e.g. N2 vocabulary, kanji, travel" autocomplete="off">
+    <button class="search-close" id="searchClose">Close</button>
+  </div>
+  <div class="search-meta" id="searchMeta"></div>
+  <div class="search-results"><div class="list" id="searchList" style="margin-top:0"></div></div>
+</div>
+
+<header class="hero" id="top">
+  <a class="ch-card" href="https://www.youtube.com/@japaneseshadowing" target="_blank" rel="noopener">
+    <span class="yt"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+    <span class="ch-txt">
+      <span class="ch-nm">Japanese Shadowing [SHADOWING 日本語]</span>
+      <span class="ch-url">youtube.com/@japaneseshadowing</span>
+    </span>
+  </a>
+  <h1><span class="jp">シャドーイング日本語</span>Listen. Repeat. Speak Japanese.</h1>
+  <p>Every lesson from the YouTube channel <b>Japanese Shadowing</b> in one place —
+  level-based courses plus JLPT vocabulary, grammar, kanji and sentence practice.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://www.youtube.com/@japaneseshadowing?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
+    <a class="btn btn-secondary" href="https://www.youtube.com/channel/UCHd9z6lj2vzHpP0878YYsGw/join" target="_blank" rel="noopener">Membership</a>
+  </div>
+  <a class="member-note" href="https://www.youtube.com/channel/UCHd9z6lj2vzHpP0878YYsGw/join" target="_blank" rel="noopener">
+    Become a channel member to receive PDF study materials for the videos<br class="mn-br">
+    and watch ongoing series all at once.
+  </a>
+  <div class="hero-stats">
+    <div class="stat"><b id="statSubs">—</b><span>subscribers</span></div>
+    <div class="stat"><b id="statVideos">—</b><span>lessons</span></div>
+    <div class="stat"><b id="statPl">—</b><span>playlists</span></div>
+    <div class="stat"><b>N5 – N1</b><span>all JLPT levels</span></div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<div class="band" id="links">
+  <div class="band-inner">
+    <a href="https://www.youtube.com/channel/UCHd9z6lj2vzHpP0878YYsGw/join" target="_blank" rel="noopener">
+      <span class="ico">♥</span>
+      <span><b>Channel Membership</b><p>Members receive PDF study materials for the videos and can watch ongoing series all at once.</p></span>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@japaneseshadowing" target="_blank" rel="noopener">
+      <span class="ico">▶</span>
+      <span><b>Japanese Shadowing on YouTube</b><p>New lessons always arrive on the YouTube channel first.</p></span>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<div id="allSec"></div>
+
+<div class="divider"></div>
+<footer>
+  <p><b>Japanese Shadowing [SHADOWING 日本語]</b> — Listening and repeating is the most effective way to learn.</p>
+  <p>Playlists, videos and view counts on this page are based on real channel data (as of 2026-07-23).</p>
+  <p>Levels shown are the channel's recommendations · See the channel for PDF materials.</p>
+  <p>All videos play on YouTube · Channel: <a href="https://www.youtube.com/@japaneseshadowing" target="_blank" rel="noopener"><b>youtube.com/@japaneseshadowing</b></a></p>
+</footer>
+
+<script>
+const DATA = /*__DATA__*/;
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const watch = (v,pl) => `https://www.youtube.com/watch?v=${v}` + (pl ? `&list=${pl}` : '');
+const CHEV = `<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>`;
+const GO = `<span class="go" title="Watch on YouTube"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>`;
+
+function shortSt(st){ return st || ''; }
+function badgeHTML(it){
+  const st = shortSt(it.st);
+  return `<span class="slots">
+    <span class="slot slot-mark">${it.new?'<span class="bdg bdg-new">NEW</span>':(it.rec?'<span class="bdg bdg-rec">★ Pick</span>':'')}</span>
+    <span class="slot slot-lv">${it.lv?`<span class="bdg bdg-lv">${esc(it.lv)}</span>`:''}</span>
+    <span class="slot slot-st">${st?`<span class="bdg ${/Ongoing/.test(st)?'bdg-ing':'bdg-lv'}" title="${esc(it.st)}">${esc(st)}</span>`:''}</span>
+    <span class="slot slot-pdf">${it.pdf?'<span class="bdg bdg-pdf">PDF</span>':''}</span>
+  </span>`;
+}
+
+const MEMBERS = new Set(DATA.members || []);
+const PREM = DATA.premieres || {};
+function vidRow(v, pl, i, withDate){
+  const meta = [v.w ? v.w : '', withDate ? v.d : ''].filter(Boolean).join(' · ');
+  const mem = MEMBERS.has(v.v) ? '<span class="bdg bdg-mem" title="Members-only video">Members</span>' : '';
+  const prem = PREM[v.v] ? `<span class="bdg bdg-prem" title="Scheduled premiere">Premieres ${esc(PREM[v.v])}</span>` : '';
+  return `<a class="vid" href="${watch(v.v, pl)}" target="_blank" rel="noopener">
+    ${i != null ? `<span class="no">${i+1}</span>` : ''}
+    <span class="vt">${esc(v.t)}</span>${prem}${mem}
+    <span class="vm">${esc(meta)}</span>${GO}</a>`;
+}
+
+const PREVIEW = 8;
+function plHTML(it, idx, withN){
+  const nSlot = withN ? `<span class="slot slot-n">${it.level && it.level!=='ALL' ? `<span class="bdg bdg-n">${it.level}</span>` : ''}</span>` : '';
+  return `<div class="pl" data-pl="${idx}">
+    <button class="pl-row" aria-expanded="false">
+      ${nSlot}
+      <span class="pl-name"><span class="nm">${esc(it.name)}</span></span>
+      ${badgeHTML(it)}
+      <span class="pl-cnt">${it.vids.length}</span>${CHEV}
+    </button>
+    <div class="pl-body"></div>
+  </div>`;
+}
+
+function fillBody(plEl, it, all){
+  const body = plEl.querySelector('.pl-body');
+  const vids = all ? it.vids : it.vids.slice(0, PREVIEW);
+  let html = `<div class="pl-actions"><a href="https://www.youtube.com/playlist?list=${it.id}" target="_blank" rel="noopener">Open playlist on YouTube ›</a></div>`;
+  html += vids.map((v,i)=>vidRow(v, it.id, i)).join('');
+  if (!all && it.vids.length > PREVIEW)
+    html += `<button class="pl-more">Show all ${it.vids.length} videos</button>`;
+  body.innerHTML = html;
+  const more = body.querySelector('.pl-more');
+  if (more) more.addEventListener('click', ()=>fillBody(plEl, it, true));
+}
+
+const REG = [];  // flat registry of items by data-pl index
+function listHTML(items, withN){
+  let prevSub = null;
+  return `<div class="list">${items.map(it=>{
+    REG.push(it);
+    let h = '';
+    if (it.sub && it.sub !== prevSub){ h = `<div class="sub-h">${esc(it.sub)}</div>`; prevSub = it.sub; }
+    return h + plHTML(it, REG.length-1, withN);
+  }).join('')}</div>`;
+}
+function bindAccordions(root){
+  root.querySelectorAll('.pl').forEach(plEl=>{
+    const it = REG[+plEl.dataset.pl];
+    plEl.querySelector('.pl-row').addEventListener('click', ()=>{
+      const open = plEl.classList.toggle('open');
+      plEl.querySelector('.pl-row').setAttribute('aria-expanded', open);
+      if (open && !plEl.querySelector('.pl-body').innerHTML) fillBody(plEl, it, false);
+    });
+  });
+}
+
+let jlptLv = 'ALLLV', jlptTy = 'ALLTY', popMode = 'all';
+const LV_ORDER = {N5:0,N4:1,N3:2,N2:3,N1:4,ALL:5};
+const TY_ORDER = {vocab:0,grammar:1,kanji:2,sentence:3};
+const TY_LABEL = {vocab:'Vocabulary',grammar:'Grammar',kanji:'Kanji',sentence:'Sentences'};
+
+(function build(){
+  const main = $('#main');
+  let html = '';
+  html += `<section class="section" id="pop">
+    <div class="section-head"><h2>Popular · Latest · Picks</h2><p>Most-watched lessons, fresh uploads, and a highlight from every playlist.</p></div>
+    <div class="seg-wrap" style="position:static;background:none;padding-top:14px">
+      <div class="seg-line"><div class="seg" id="segPop">
+        <button data-v="all" class="on">Popular</button>
+        <button data-v="latest">Latest</button>
+        <button data-v="pick">Picks</button>
+      </div></div>
+    </div>
+    <div class="list" id="popList" style="margin-top:6px"></div>
+    <button class="pop-more" id="popMore">Show more</button>
+  </section>`;
+  for(const g of DATA.groups){
+    html += `<section class="section" id="${g.key}">
+      <div class="section-head"><h2>${g.title}</h2><p>${g.desc}</p></div>
+      ${listHTML(g.items)}
+    </section>`;
+  }
+  html += `<section class="section" id="jlpt">
+    <div class="section-head"><h2>JLPT Prep</h2><p>Filter by level and type — we recommend vocabulary → grammar in each level.</p></div>
+    <div class="seg-wrap">
+      <div class="seg-line"><span class="seg-lbl">Level</span><div class="seg" id="segLv">
+        <button data-v="ALLLV" class="on">All</button>
+        ${['N5','N4','N3','N2','N1'].map(l=>`<button data-v="${l}">${l}</button>`).join('')}
+      </div></div>
+      <div class="seg-line"><span class="seg-lbl">Type</span><div class="seg" id="segTy">
+        <button data-v="ALLTY" class="on">All</button>
+        ${Object.keys(TY_LABEL).map(t=>`<button data-v="${t}">${TY_LABEL[t]}</button>`).join('')}
+      </div></div>
+      <div class="jlpt-desc" id="jlptDesc"></div>
+    </div>
+    <div id="jlptList"></div>
+  </section>`;
+  main.innerHTML = html;
+  const allPls = [...DATA.groups.flatMap(g=>g.items), ...DATA.jlptFlat];
+  $('#allSec').innerHTML = `<section class="section" id="all">
+    <div class="section-head"><h2>All Playlists</h2><p>Every playlist on the channel · ${allPls.length} playlists · ${DATA.uploads.length.toLocaleString()} videos</p></div>
+    ${listHTML(allPls)}
+  </section>`;
+  bindAccordions($('#allSec'));
+  $('#statVideos').textContent = DATA.uploads.length.toLocaleString() + '+';
+  $('#statPl').textContent = DATA.groups.reduce((a,g)=>a+g.items.length,0) + DATA.jlptFlat.length;
+  if (DATA.channel && DATA.channel.subs) $('#statSubs').textContent = DATA.channel.subs;
+  bindAccordions(main);
+  renderJlpt();
+})();
+
+/* 인기 · 최신 · 추천 영상 (기본 5개, 펼치면 15개) */
+const POP_MAX = 15, POP_MIN = 5;
+let popExpand = false;
+const UMAP = Object.fromEntries(DATA.uploads.map(u=>[u.v, u]));
+const vnOf = v => (v.vn != null ? v.vn : (UMAP[v.v]?.vn || 0));
+
+const POP_TOP = DATA.uploads.slice().sort((a,b)=>(b.vn||0)-(a.vn||0)).slice(0, POP_MAX);
+const POP_TOP_IDS = new Set(POP_TOP.map(v=>v.v));
+
+// 추천: 각 재생목록에서 조회수 1위 영상을 뽑아 (인기 영상 제외) 랜덤 정렬
+function buildPicks(){
+  const allPls = [...DATA.groups.flatMap(g=>g.items), ...DATA.jlptFlat];
+  const seen = new Set(); const picks = [];
+  for (const pl of allPls){
+    const best = pl.vids.slice().sort((a,b)=>vnOf(b)-vnOf(a))[0];
+    if (!best) continue;
+    if (POP_TOP_IDS.has(best.v) || seen.has(best.v)) continue;
+    seen.add(best.v);
+    picks.push(UMAP[best.v] || best);
+  }
+  for (let i = picks.length - 1; i > 0; i--) {   // 셔플
+    const j = Math.floor(Math.random() * (i + 1));
+    [picks[i], picks[j]] = [picks[j], picks[i]];
+  }
+  return picks;
+}
+let PICKS = buildPicks();
+
+function popItems(){
+  if (popMode === 'latest') return DATA.uploads.slice(0, POP_MAX);
+  if (popMode === 'pick')   return PICKS.slice(0, POP_MAX);
+  return POP_TOP;
+}
+function renderPop(){
+  const box = $('#popList');
+  const items = popItems();
+  const shown = items.slice(0, popExpand ? POP_MAX : POP_MIN);
+  const rank = popMode === 'all';
+  box.innerHTML = shown.map((v,i)=>vidRow(v, null, rank ? i : null, popMode==='latest')).join('');
+  const btn = $('#popMore');
+  if (items.length <= POP_MIN) { btn.style.display = 'none'; }
+  else {
+    btn.style.display = '';
+    btn.textContent = popExpand ? 'Show less' : `Show more (${Math.min(items.length, POP_MAX)})`;
+  }
+}
+$('#segPop').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  popMode = b.dataset.v;
+  popExpand = false;
+  if (popMode === 'pick') PICKS = buildPicks();   // 탭 누를 때마다 새로 셔플
+  document.querySelectorAll('#segPop button').forEach(x=>x.classList.toggle('on', x===b));
+  renderPop();
+});
+$('#popMore').addEventListener('click', ()=>{ popExpand = !popExpand; renderPop(); });
+renderPop();
+
+/* JLPT dual filter */
+function renderJlpt(){
+  const box = $('#jlptList');
+  let items = DATA.jlptFlat.filter(it =>
+    (jlptLv==='ALLLV' || it.level===jlptLv) && (jlptTy==='ALLTY' || it.type===jlptTy));
+  items = items.slice().sort((a,b)=>{
+    // 유형 필터만 선택 시 유형→레벨, 그 외 레벨→유형 순 정렬
+    if (jlptTy!=='ALLTY' || jlptLv!=='ALLLV') return (LV_ORDER[a.level]-LV_ORDER[b.level]) || (TY_ORDER[a.type]-TY_ORDER[b.type]);
+    return (LV_ORDER[a.level]-LV_ORDER[b.level]) || (TY_ORDER[a.type]-TY_ORDER[b.type]);
+  });
+  const lvTxt = jlptLv==='ALLLV' ? 'All levels' : jlptLv;
+  const tyTxt = jlptTy==='ALLTY' ? 'all types' : TY_LABEL[jlptTy];
+  $('#jlptDesc').textContent = `${lvTxt} · ${tyTxt} — ${items.length} playlists`;
+  box.innerHTML = listHTML(items, true);
+  bindAccordions(box);
+}
+$('#segLv').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  jlptLv = b.dataset.v;
+  document.querySelectorAll('#segLv button').forEach(x=>x.classList.toggle('on', x===b));
+  renderJlpt();
+});
+$('#segTy').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  jlptTy = b.dataset.v;
+  document.querySelectorAll('#segTy button').forEach(x=>x.classList.toggle('on', x===b));
+  renderJlpt();
+});
+
+/* Nav active state */
+const secIO = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active', a.dataset.sec===e.target.id));
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('.section').forEach(s=>secIO.observe(s));
+
+/* Search */
+const overlay = $('#searchOverlay'), input = $('#searchInput'), list = $('#searchList'), meta = $('#searchMeta');
+function openSearch(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; setTimeout(()=>input.focus(),100); }
+function closeSearch(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+$('#searchOpen').addEventListener('click', openSearch);
+$('#searchClose').addEventListener('click', closeSearch);
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeSearch();
+  if((e.metaKey||e.ctrlKey) && e.key==='k'){ e.preventDefault(); openSearch(); }
+});
+function doSearch(){
+  const q = input.value.trim().toLowerCase();
+  if(!q){ list.innerHTML=''; meta.textContent = 'Search ' + DATA.uploads.length.toLocaleString() + ' videos. (⌘K)'; return; }
+  const terms = q.split(/\s+/);
+  const hits = DATA.uploads.filter(v=>{ const t=v.t.toLowerCase(); return terms.every(x=>t.includes(x)); }).slice(0,80);
+  meta.textContent = hits.length ? `${hits.length} found` + (hits.length===80?' (showing top 80)':'') : 'No results';
+  list.innerHTML = hits.map(v=>vidRow(v, null)).join('');
+}
+input.addEventListener('input', doSearch);
+doSearch();
+</script>
+</body>
+</html>
